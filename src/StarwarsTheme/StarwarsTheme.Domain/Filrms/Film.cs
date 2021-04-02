@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StarwarsTheme.Domain.Filrms
+﻿namespace StarwarsTheme.Domain.Filrms
 {
-    class Film
+    public class Film
     {
+        public FilmId Id { get; }
+        public FilmInfo Info { get; }
+        public Film(FilmId id, FilmInfo info) => (Id, Info) = (id, info);
     }
 }

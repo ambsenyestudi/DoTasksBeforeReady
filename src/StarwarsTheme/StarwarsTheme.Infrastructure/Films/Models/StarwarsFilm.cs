@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StarwarsTheme.Infrastructure.Characters.Models
+namespace StarwarsTheme.Infrastructure.Films.Models
 {
     public class StarwarsFilm
     {
@@ -11,7 +11,7 @@ namespace StarwarsTheme.Infrastructure.Characters.Models
         public int EpisodeId { get; set; }
 
         [JsonProperty("director")]
-        public int Dirctor { get; set; }
+        public string Director { get; set; }
 
         [JsonProperty("release_date")]
         public string ReleaseDate { get; set; }

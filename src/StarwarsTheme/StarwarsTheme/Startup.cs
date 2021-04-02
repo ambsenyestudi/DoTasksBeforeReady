@@ -6,7 +6,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.FeatureManagement;
 using Microsoft.OpenApi.Models;
 using StarwarsTheme.Application.Characters;
+using StarwarsTheme.Application.Films;
+using StarwarsTheme.Infrastructure;
 using StarwarsTheme.Infrastructure.Characters;
+using StarwarsTheme.Infrastructure.Films;
 using StarwarsTheme.Infrastructure.Mapping.Profiles;
 using StarwarsTheme.PriorToReadyTasks;
 
@@ -30,11 +33,12 @@ namespace StarwarsTheme
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StarwarsTheme", Version = "v1" });
             });
-            services.Configure<StarwarsCharactersSettings>(Configuration.GetSection(nameof(StarwarsCharactersSettings)));
+            services.Configure<StarwarsGatewaySettings>(Configuration.GetSection(nameof(StarwarsGatewaySettings)));
             services.AddFeatureManagement();
             services.AddPriorToReadyTasks();
-
+             
             services
+                .AddSingleton<IFilmRepository,InMemoryFilmRepository>()
                 .AddTransient<ICharacterService, CharacterService>()
                 .AddTransient<ICharacterMappingService, CharacterMappingService>()
                 .AddSingleton<ICharacterRepository, InMemoryCharacterRepository>()

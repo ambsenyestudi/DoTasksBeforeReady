@@ -1,21 +1,29 @@
 ﻿using System;
+using System.Globalization;
 
 namespace StarwarsTheme.Domain.Filrms
 {
     public record FilmInfo
     {
+
+        public static string REALEASE_DATE_FORMAT= "yyyy-MM-dd";
+
         public string Title { get; }
-        
-        public FilmId FilmId { get; }
+
+        public int EpisodeId { get; }
 
         public string Director { get; }
 
         public DateTime ReleaseDate { get; }
 
-        public FilmInfo(string title, FilmId filmId, string director, DateTime releaseDate) => (Title, FilmId, Director, ReleaseDate) = (title, filmId, director, releaseDate);
+       
 
-        //todo use dateformat
-        public static bool TryParseDate(string input, out DateTime releaseDate, string dateFromat = "yyyy-MM-dd") =>
-            DateTime.TryParse(input, out releaseDate);
+        public FilmInfo(string title, string director, int episodeId,  DateTime releaseDate) => (Title, EpisodeId, Director, ReleaseDate) = (title, episodeId, director, releaseDate);
+
+        public static DateTime StringToReleaseDate(string input) =>
+            DateTime.ParseExact(input,
+                REALEASE_DATE_FORMAT,
+                CultureInfo.InvariantCulture);
+
     }
 }

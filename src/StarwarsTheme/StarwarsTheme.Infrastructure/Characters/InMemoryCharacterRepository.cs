@@ -15,7 +15,7 @@ namespace StarwarsTheme.Infrastructure.Characters
     {
         public LastUpdated LastUpdated { get; private set; } = LastUpdated.Never;
 
-        private CharacterCollection cache;
+        private CharacterCollection inMemoryList;
         private readonly IStarwarsCharactersGateway gateway;
         private readonly IMapper mapper;
 
@@ -27,24 +27,22 @@ namespace StarwarsTheme.Infrastructure.Characters
             this.mapper = mapper;
             var guid = Guid.NewGuid();
             var list = new List<Character> { new Character(new CharacterId(guid), new CharacterInfo("Luck", "Blue")) };
-            cache = new CharacterCollection(list);
+            inMemoryList = new CharacterCollection(list);
         }
 
         
 
-        public CharacterCollection GetAll()
-        {
-            return cache;
-        }
+        public CharacterCollection GetAll() => 
+            inMemoryList;
 
         public async Task UpdateRepositoryAsync(CancellationToken cancellationToken)
         {
-            var response = await gateway.GetAll(cancellationToken);
+            var response = await gateway.GetAllCharactersAsync(cancellationToken);
             var list = response.Results
                 .Select(swCh => 
                     new Character(new CharacterId(Guid.NewGuid()), 
                     mapper.Map<CharacterInfo>(swCh)));
-            cache = new CharacterCollection(list);
+            inMemoryList = new CharacterCollection(list);
         }
 
     }

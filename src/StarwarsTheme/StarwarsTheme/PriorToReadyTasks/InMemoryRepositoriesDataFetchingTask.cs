@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FeatureManagement;
 using StarwarsTheme.Application.Characters;
+using StarwarsTheme.Application.Films;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,8 +21,10 @@ namespace StarwarsTheme.PriorToReadyTasks
             var featureManager = serviceProvider.GetRequiredService<IFeatureManager>();
             if (await featureManager.IsEnabledAsync("PriorToReadyDataFetchingFeature"))
             {
-                var repo = serviceProvider.GetRequiredService<ICharacterRepository>();
-                await repo.UpdateRepositoryAsync(cancellationToken);
+                var characterRepo = serviceProvider.GetRequiredService<ICharacterRepository>();
+                await characterRepo.UpdateRepositoryAsync(cancellationToken);
+                var filmRepo = serviceProvider.GetRequiredService<IFilmRepository>();
+                await filmRepo.UpdateRepositoryAsync(cancellationToken);
             }
             
         }

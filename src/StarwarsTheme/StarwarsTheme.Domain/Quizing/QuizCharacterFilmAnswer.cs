@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StarwarsTheme.Domain.Filrms;
 
 namespace StarwarsTheme.Domain.Quizing
 {
     public record QuizCharacterFilmAnswer
     {
-        public QuizId Id { get; }
-
+        public QuizId QuizId { get; }
+        public FilmInfo FilmInfo { get; }
+        public QuizCharacterFilmAnswer(QuizId quizId, FilmInfo filmInfo) => (QuizId, FilmInfo) = (quizId, filmInfo);
     }
 }
