@@ -9,8 +9,8 @@ namespace StarwarsTheme.Infrastructure.Mapping.Profiles
     {
         public CharacterProfile()
         {
-            CreateMap<Character, CharacterDTO>();
-            CreateMap<StarwarsCharacter, Character>();
+            CreateMap<CharacterInfo, CharacterDTO>();
+            CreateMap<StarwarsCharacter, CharacterInfo>();
         }
         
     }

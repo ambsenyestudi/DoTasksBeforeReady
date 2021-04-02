@@ -2,6 +2,7 @@
 using StarwarsTheme.Application.Characters;
 using StarwarsTheme.Domain;
 using StarwarsTheme.Domain.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -24,7 +25,8 @@ namespace StarwarsTheme.Infrastructure.Characters
         {
             this.gateway = gateway;
             this.mapper = mapper;
-            var list = new List<Character> { new Character("Luck", "Blue") };
+            var guid = Guid.NewGuid();
+            var list = new List<Character> { new Character(new CharacterId(guid), new CharacterInfo("Luck", "Blue")) };
             cache = new CharacterCollection(list);
         }
 
@@ -38,7 +40,10 @@ namespace StarwarsTheme.Infrastructure.Characters
         public async Task UpdateRepositoryAsync(CancellationToken cancellationToken)
         {
             var response = await gateway.GetAll(cancellationToken);
-            var list = response.Results.Select(swCh => mapper.Map<Character>(swCh));
+            var list = response.Results
+                .Select(swCh => 
+                    new Character(new CharacterId(Guid.NewGuid()), 
+                    mapper.Map<CharacterInfo>(swCh)));
             cache = new CharacterCollection(list);
         }
 

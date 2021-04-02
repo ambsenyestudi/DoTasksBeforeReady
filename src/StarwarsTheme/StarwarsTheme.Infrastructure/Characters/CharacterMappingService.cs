@@ -23,7 +23,7 @@ namespace StarwarsTheme.Infrastructure.Characters
         }
         public CharacterCollection ToCharaterCollection(StarwarsCharacterResponse characterResponse)
         {
-            var charList = characterResponse.Results.Select(ch => new Character(ch.Name, ch.EyeColor));
+            var charList = characterResponse.Results.Select(ch => new CharacterInfo(ch.Name, ch.EyeColor));
             return new CharacterCollection(charList);
         }
     }

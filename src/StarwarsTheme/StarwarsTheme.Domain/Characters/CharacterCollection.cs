@@ -12,7 +12,7 @@ namespace StarwarsTheme.Domain.Characters
         }
         public CharacterCollection(IEnumerable<Character> characters)
         {
-            characterDictionary = characters.ToDictionary(k => k.Name, v => v);
+            characterDictionary = characters.ToDictionary(k => k.Info.Name, v => v);
         }
         public IEnumerable<Character> AsEnumerable() =>
             characterDictionary.Values;

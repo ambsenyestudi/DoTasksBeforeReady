@@ -20,8 +20,8 @@ namespace StarwarsTheme.Application.Characters
             var collection = repository.GetAll();
             return collection.AsEnumerable().Select(ch=>new CharacterDTO 
             { 
-                Name = ch.Name,
-                EyeColor = ch.EyeColor
+                Name = ch.Info.Name,
+                EyeColor = ch.Info.EyeColor
             }).ToList();
         }
     }
