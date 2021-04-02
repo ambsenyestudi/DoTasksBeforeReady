@@ -8,7 +8,7 @@ namespace StarwarsTheme.Domain.Quizing
     {
         private List<QuizCharacterFilmAnswer> quizAnswerList;
 
-        public QuizCharacterFilmAnswerCollection(
+        internal QuizCharacterFilmAnswerCollection(
             IEnumerable<Film> filmCollection, 
             QuizId quizId)
         {

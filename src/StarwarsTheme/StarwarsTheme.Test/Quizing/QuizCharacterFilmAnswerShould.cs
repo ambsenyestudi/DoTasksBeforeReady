@@ -1,5 +1,6 @@
 ﻿using StarwarsTheme.Domain;
 using StarwarsTheme.Domain.Quizing;
+using System;
 using Xunit;
 
 namespace StarwarsTheme.Test.Quizing
@@ -17,8 +18,14 @@ namespace StarwarsTheme.Test.Quizing
             var episodeIdCollection = answers.ToEpisodeIdCollection();
             Assert.Equal(oldSagaIds, episodeIdCollection);
         }
+        [Fact]
+        public void Throw_whern_EmptyList()
+        {
+            Assert.Throws<ArgumentException>(()=> new CharacterFilmQuiz("Luck Skywalker", null));
+            
+        }
 
 
-         
+
     }
 }

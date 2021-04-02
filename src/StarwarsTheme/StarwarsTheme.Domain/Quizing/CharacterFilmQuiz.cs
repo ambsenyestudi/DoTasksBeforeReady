@@ -1,6 +1,7 @@
 ﻿using StarwarsTheme.Domain.Filrms;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StarwarsTheme.Domain.Quizing
 {
@@ -12,21 +13,30 @@ namespace StarwarsTheme.Domain.Quizing
 
         public QuizCharacterFilmAnswerCollection Answers { get; }
 
-        public CharacterFilmQuiz(string characterName, IEnumerable<Film> filmColleciton, Guid id = default(Guid))
+        public CharacterFilmQuiz(string characterName, IEnumerable<Film> filmCollection, Guid id = default(Guid))
         {
-            if(id == default(Guid))
+            EnsuerFilms(filmCollection);
+            
+            if (id == default(Guid))
             {
                 id = Guid.NewGuid();
             }
             Id = new QuizId(id);
 
             this.characterName = characterName;
-            this.Answers = new QuizCharacterFilmAnswerCollection(filmColleciton, Id);
+            this.Answers = new QuizCharacterFilmAnswerCollection(filmCollection, Id);
         }
 
         public QuizCharacterFilmAnswerCollection GetAnswers()
         {
             return Answers;
+        }
+        public void EnsuerFilms(IEnumerable<Film> films)
+        {
+            if(films == null || !films.Any())
+            {
+                throw new ArgumentException();
+            }
         }
     }
 }
