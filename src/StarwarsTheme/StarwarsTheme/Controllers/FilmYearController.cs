@@ -18,7 +18,7 @@ namespace StarwarsTheme.Controllers
         [HttpGet("year")]
         public IEnumerable<FilmYearQuestionDTO> List()
         {
-            return quizService.GetQuestions();
+            return quizService.GetFilmYearQuestions();
         }
     }
 }

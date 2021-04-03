@@ -1,9 +1,4 @@
 ﻿using StarwarsTheme.Application.DTO;
-using StarwarsTheme.Application.Films;
-using StarwarsTheme.Domain;
-using StarwarsTheme.Domain.Films;
-using StarwarsTheme.Domain.Quizing;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,25 +6,23 @@ namespace StarwarsTheme.Application.Quizing
 {
     public class QuizService : IQuizService
     {
-        private readonly IFilmRepository filmRepository;
+        private readonly IQuizRepository repository;
         private readonly IQuizMappingService mappingService;
 
-        public QuizService(IFilmRepository filmRepository, IQuizMappingService mappingService)
+        public QuizService(IQuizRepository repository, IQuizMappingService mappingService)
         {
-            this.filmRepository = filmRepository;
+            this.repository = repository;
             this.mappingService = mappingService;
         }
-        public List<FilmYearQuestionDTO> GetQuestions()
+        public List<FilmYearQuestionDTO> GetFilmYearQuestions()
         {
-            var filmCollection = filmRepository.GetAll();
-            var filmList = filmCollection.AsEnumerable().ToList();
+            var quizCollection = repository.GetAllYearFilms();
+            var quizList = quizCollection.AsEnumerable().ToList();
             var resultList = new List<FilmYearQuestionDTO>();
-            for (int i = 0; i < filmList.Count; i++)
+            for (int i = 0; i < quizList.Count; i++)
             {
-                var quizId = new QuizId(Guid.NewGuid());
-                var film = filmList[i];
-                var filmQuiz = Quiz.CreateFilmYearQuiz(quizId, film);
-                resultList.Add(mappingService.ToQuestion(filmQuiz));
+                var quiz = quizList[i];
+                resultList.Add(mappingService.ToQuestion(quiz));
             }
             return resultList;
         }

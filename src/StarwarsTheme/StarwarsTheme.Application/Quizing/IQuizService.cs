@@ -5,6 +5,6 @@ namespace StarwarsTheme.Application.Quizing
 {
     public interface IQuizService
     {
-        List<FilmYearQuestionDTO> GetQuestions();
+        List<FilmYearQuestionDTO> GetFilmYearQuestions();
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.FeatureManagement;
 using StarwarsTheme.Application.Characters;
 using StarwarsTheme.Application.Films;
+using StarwarsTheme.Application.Quizing;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace StarwarsTheme.PriorToReadyTasks
                 await characterRepo.UpdateRepositoryAsync(cancellationToken);
                 var filmRepo = serviceProvider.GetRequiredService<IFilmRepository>();
                 await filmRepo.UpdateRepositoryAsync(cancellationToken);
+                var quizRepo = serviceProvider.GetRequiredService<IQuizRepository>();
+                await quizRepo.UpdateRepositoryAsync(cancellationToken);
             }
             
         }

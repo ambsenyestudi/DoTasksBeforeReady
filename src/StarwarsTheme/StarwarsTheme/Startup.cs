@@ -41,6 +41,7 @@ namespace StarwarsTheme
             services.AddPriorToReadyTasks();
 
             services
+                .AddSingleton<IQuizRepository, InMemoryQuizRepository>()
                 .AddTransient<IQuizService, QuizService>()
                 .AddTransient<IQuizMappingService, QuizMappingService>()
                 .AddSingleton<IFilmRepository, InMemoryFilmRepository>()
