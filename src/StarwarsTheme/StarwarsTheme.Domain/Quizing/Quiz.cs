@@ -1,5 +1,6 @@
 ﻿using StarwarsTheme.Domain.Characters;
 using StarwarsTheme.Domain.Films;
+using StarwarsTheme.Domain.Quizing.FilmYears;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,10 @@ namespace StarwarsTheme.Domain.Quizing
 {
     public class Quiz
     {
+        public static FilmYearQuiz CreateFilmYearQuiz(QuizId id, Film film)
+        {
+            return new FilmYearQuiz(id, film);
+        }
         public static CharacterFilmQuiz CreateCharacterFilmQuiz(Character character, IEnumerable<Film> filmCollection, QuizId id)
         {
             EnsureCharacter(character);

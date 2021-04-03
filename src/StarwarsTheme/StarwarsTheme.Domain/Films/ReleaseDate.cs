@@ -15,6 +15,10 @@ namespace StarwarsTheme.Domain.Films
             EnsuerValidDate(dateTime);
             return new ReleaseDate(dateTime);
         }
+
+        public int GetYear() =>
+            Value.Year;
+
         public static ReleaseDate Parse(string input)
         {
             var date = DateTime.ParseExact(input,

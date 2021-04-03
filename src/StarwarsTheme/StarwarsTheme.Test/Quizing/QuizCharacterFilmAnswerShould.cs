@@ -5,6 +5,7 @@ using StarwarsTheme.Domain.Quizing;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using static StarwarsTheme.Test.Quizing.QuizingConstans;
 
 namespace StarwarsTheme.Test.Quizing
 {
@@ -24,7 +25,7 @@ namespace StarwarsTheme.Test.Quizing
         {
             var oldSagaIds = new EpisodeIdCollection(new int[] { 4, 5, 6 });
 
-            var quiz = Quiz.CreateCharacterFilmQuiz(LUCK, QuizingConstans.OLD_SAGA_FILM_LIST, LUCK_QUIZ_ID);
+            var quiz = Quiz.CreateCharacterFilmQuiz(LUCK, OLD_SAGA_FILM_LIST, LUCK_QUIZ_ID);
             var answers = quiz.GetAnswers();
             var episodeIdCollection = answers.ToEpisodeIdCollection();
             Assert.Equal(oldSagaIds, episodeIdCollection);
@@ -42,7 +43,7 @@ namespace StarwarsTheme.Test.Quizing
         public void Throw_when_no_character()
         {
             var noNameCharacter = default(Character);
-            Assert.Throws<ArgumentException>(() => Quiz.CreateCharacterFilmQuiz(noNameCharacter, QuizingConstans.OLD_SAGA_FILM_LIST, LUCK_QUIZ_ID));
+            Assert.Throws<ArgumentException>(() => Quiz.CreateCharacterFilmQuiz(noNameCharacter, OLD_SAGA_FILM_LIST, LUCK_QUIZ_ID));
 
         }
         

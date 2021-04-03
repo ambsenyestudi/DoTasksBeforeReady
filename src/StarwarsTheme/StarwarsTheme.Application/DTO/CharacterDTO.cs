@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace StarwarsTheme.Application.Characters
+﻿namespace StarwarsTheme.Application.Characters
 {
     public class CharacterDTO
     {

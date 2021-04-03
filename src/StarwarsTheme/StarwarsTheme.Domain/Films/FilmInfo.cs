@@ -13,6 +13,9 @@
 
         public FilmInfo(string title, string director, int episodeId, ReleaseDate releaseDate) => (Title, EpisodeId, Director, ReleaseDate) = (title, episodeId, director, releaseDate);
 
+        public int GetYearOfMaking() =>
+            ReleaseDate.GetYear();
+
 
     }
 }
