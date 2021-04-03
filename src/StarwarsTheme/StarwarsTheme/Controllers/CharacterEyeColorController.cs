@@ -25,7 +25,9 @@ namespace StarwarsTheme.Controllers
         [HttpPost("eye_color")]
         public bool Answer([FromBody] CharacterEyeColorAnswerDTO answer)
         {
+            //todo filter for key not found exception
             return quizService.EvaluateEyeColorAnswer(answer);
+            
         }
     }
 }
