@@ -37,7 +37,7 @@ namespace StarwarsTheme.Infrastructure.Quizing
         public IEnumerable<FilmYearQuiz> GetAllYearFilms() => 
             filmYearQuizDictionary.Values;
 
-        public FilmYearQuiz GetBy(QuizId id) =>
+        public FilmYearQuiz GetFilmYearQuizBy(QuizId id) =>
             filmYearQuizDictionary[id];
 
         public async Task UpdateRepositoryAsync(CancellationToken cancellationToken) 

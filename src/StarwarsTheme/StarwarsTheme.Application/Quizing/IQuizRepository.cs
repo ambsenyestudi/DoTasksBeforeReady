@@ -11,6 +11,6 @@ namespace StarwarsTheme.Application.Quizing
         LastUpdated LastUpdated { get; }
         Task UpdateRepositoryAsync(CancellationToken cancellationToken);
         IEnumerable<FilmYearQuiz> GetAllYearFilms();
-        FilmYearQuiz GetBy(QuizId id);
+        FilmYearQuiz GetFilmYearQuizBy(QuizId id);
     }
 }

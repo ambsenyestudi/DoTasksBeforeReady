@@ -20,5 +20,10 @@ namespace StarwarsTheme.Controllers
         {
             return quizService.GetFilmYearQuestions();
         }
+        [HttpPost("year")]
+        public bool Answer([FromBody] FilmYearAnswerDTO answer)
+        {
+            return quizService.EvaluateFilmYearAnswer(answer);
+        }
     }
 }

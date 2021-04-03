@@ -1,4 +1,7 @@
 ﻿using StarwarsTheme.Application.DTO;
+using StarwarsTheme.Domain;
+using StarwarsTheme.Domain.Quizing.FilmYears;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,6 +17,7 @@ namespace StarwarsTheme.Application.Quizing
             this.repository = repository;
             this.mappingService = mappingService;
         }
+
         public List<FilmYearQuestionDTO> GetFilmYearQuestions()
         {
             var quizCollection = repository.GetAllYearFilms();
@@ -26,5 +30,16 @@ namespace StarwarsTheme.Application.Quizing
             }
             return resultList;
         }
+
+        public bool EvaluateFilmYearAnswer(FilmYearAnswerDTO rawAnswer)
+        {
+            var quizId = new QuizId(new Guid(rawAnswer.QuizId));
+            var filmYearQuiz = repository.GetFilmYearQuizBy(quizId);
+            var answer = new FilmYearAnswer(quizId, rawAnswer.Year);
+            return filmYearQuiz.IsCorrectAnswer(answer);
+        }
+
+
+
     }
 }
