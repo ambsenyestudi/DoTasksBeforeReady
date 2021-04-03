@@ -57,6 +57,9 @@ namespace StarwarsTheme.Infrastructure.Quizing
         public FilmYearQuiz GetFilmYearQuizBy(QuizId id) =>
             filmYearQuizDictionary[id];
 
+        public CharacterEyeColorQuiz GetCharacterEyeColorQuizBy(QuizId id) =>
+            characterEyeColorQuizDictionary[id];
+
         public async Task UpdateRepositoryAsync(CancellationToken cancellationToken) 
         {
             var filCollection = await Task.Factory.StartNew(() => filmRepository.GetAll());
@@ -66,5 +69,7 @@ namespace StarwarsTheme.Infrastructure.Quizing
 
         public IEnumerable<CharacterEyeColorQuiz> GetAllCharactersEyeColor() =>
             characterEyeColorQuizDictionary.Values;
+
+        
     }
 }

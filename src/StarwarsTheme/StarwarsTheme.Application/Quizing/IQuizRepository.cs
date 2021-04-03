@@ -14,5 +14,6 @@ namespace StarwarsTheme.Application.Quizing
         IEnumerable<FilmYearQuiz> GetAllYearFilms();
         FilmYearQuiz GetFilmYearQuizBy(QuizId id);
         IEnumerable<CharacterEyeColorQuiz> GetAllCharactersEyeColor();
+        CharacterEyeColorQuiz GetCharacterEyeColorQuizBy(QuizId quizId);
     }
 }

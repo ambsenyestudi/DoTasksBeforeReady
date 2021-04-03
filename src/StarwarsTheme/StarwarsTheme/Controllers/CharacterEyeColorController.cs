@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StarwarsTheme.Controllers
 {
-    [Route("api/quiz/characte")]
+    [Route("api/quiz/character")]
     [ApiController]
     public class CharacterEyeColorController : ControllerBase
     {
@@ -21,6 +21,11 @@ namespace StarwarsTheme.Controllers
         public IEnumerable<QuizQuestionDTO> List()
         {
             return quizService.GetCharacterEyeColorQuestions();
+        }
+        [HttpPost("eye_color")]
+        public bool Answer([FromBody] CharacterEyeColorAnswerDTO answer)
+        {
+            return quizService.EvaluateEyeColorAnswer(answer);
         }
     }
 }

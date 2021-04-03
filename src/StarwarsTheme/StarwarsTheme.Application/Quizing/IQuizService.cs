@@ -8,5 +8,6 @@ namespace StarwarsTheme.Application.Quizing
         List<QuizQuestionDTO> GetFilmYearQuestions();
         bool EvaluateFilmYearAnswer(FilmYearAnswerDTO answer);
         IEnumerable<QuizQuestionDTO> GetCharacterEyeColorQuestions();
+        bool EvaluateEyeColorAnswer(CharacterEyeColorAnswerDTO answer);
     }
 }

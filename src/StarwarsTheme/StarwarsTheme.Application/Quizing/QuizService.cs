@@ -1,5 +1,6 @@
 ﻿using StarwarsTheme.Application.DTO;
 using StarwarsTheme.Domain;
+using StarwarsTheme.Domain.Quizing.CharacterEyeColors;
 using StarwarsTheme.Domain.Quizing.FilmYears;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,14 @@ namespace StarwarsTheme.Application.Quizing
                 resultList.Add(mappingService.ToCharacterEyeColorQuestion(quiz));
             }
             return resultList;
+        }
+
+        public bool EvaluateEyeColorAnswer(CharacterEyeColorAnswerDTO rawAnswer)
+        {
+            var quizId = new QuizId(new Guid(rawAnswer.QuizId));
+            var filmYearQuiz = repository.GetCharacterEyeColorQuizBy(quizId);
+            var answer = new CharacterEyeColorAnswer(quizId, rawAnswer.EyeColor);
+            return filmYearQuiz.IsCorrectAnswer(answer);
         }
     }
 }
