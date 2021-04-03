@@ -11,6 +11,7 @@ namespace StarwarsTheme.Infrastructure.Mapping.Profiles
         {
             CreateMap<CharacterInfo, CharacterDTO>();
             CreateMap<StarwarsCharacter, CharacterInfo>();
+            CreateMap<CharacterId, string>().ConvertUsing(cId => cId.Value.ToString());
         }
         
     }

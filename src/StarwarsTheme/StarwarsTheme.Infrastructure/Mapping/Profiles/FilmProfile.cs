@@ -1,25 +1,26 @@
 ﻿using AutoMapper;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using StarwarsTheme.Domain.Filrms;
+using StarwarsTheme.Application.DTO;
+using StarwarsTheme.Domain;
+using StarwarsTheme.Domain.Films;
 using StarwarsTheme.Infrastructure.Films.Models;
-using System;
 
 namespace StarwarsTheme.Infrastructure.Mapping.Profiles
 {
     public class FilmProfile : Profile
     {
-        private const string dateFormat = "yyyy-MM-dd";
-        public static readonly IsoDateTimeConverter dateConverter = new IsoDateTimeConverter { DateTimeFormat = dateFormat };
         public FilmProfile()
         {
+            //This does not work
+            /*
             CreateMap<StarwarsFilm, FilmInfo>()
-                .ForMember(fi => fi.Director,
-                opt => opt.MapFrom(src =>src.Director))
                 .ForMember(fi => fi.ReleaseDate,
-                opt => opt.MapFrom(src => ToFormatedDateTime(src.ReleaseDate, dateConverter)));
+                opt => opt.MapFrom(src => ReleaseDate.Parse(src.ReleaseDate)));
+            */
+            CreateMap<StarwarsFilm, FilmInfo>();
+            CreateMap<string, ReleaseDate>().ConvertUsing(str => ReleaseDate.Parse(str));
+            CreateMap<ReleaseDate, string>().ConvertUsing(rd => rd.Value.ToString(ReleaseDate.REALEASE_DATE_FORMAT));
+            CreateMap<FilmInfo, FilmDTO>();
+            CreateMap<FilmId, string>().ConvertUsing(fId => fId.Value.ToString());
         }
-        private DateTime ToFormatedDateTime(string input, IsoDateTimeConverter converter) =>
-            JsonConvert.DeserializeObject<DateTime>(input, converter);
     }
 }

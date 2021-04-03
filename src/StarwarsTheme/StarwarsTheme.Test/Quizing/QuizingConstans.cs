@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using StarwarsTheme.Domain;
-using StarwarsTheme.Domain.Filrms;
+using StarwarsTheme.Domain.Films;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

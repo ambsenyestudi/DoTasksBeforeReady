@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace StarwarsTheme.Domain.Filrms
+namespace StarwarsTheme.Domain.Films
 {
     public class FilmCollection
     {

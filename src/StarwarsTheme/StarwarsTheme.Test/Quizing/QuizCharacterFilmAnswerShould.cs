@@ -1,6 +1,6 @@
 ﻿using StarwarsTheme.Domain;
 using StarwarsTheme.Domain.Characters;
-using StarwarsTheme.Domain.Filrms;
+using StarwarsTheme.Domain.Films;
 using StarwarsTheme.Domain.Quizing;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace StarwarsTheme.Test.Quizing
         private readonly QuizId LUCK_QUIZ_ID = new QuizId(new Guid("9df03625-16ad-40cb-8780-a976d6a90945"));
         public QuizCharacterFilmAnswerShould()
         {
-            LUCK = new Character(LUCK_ID, CharacterInfo.Create("Luck Skywalker", "blue"));
+            LUCK = new Character(LUCK_ID, new CharacterInfo("Luck Skywalker", "blue"));
         }
         [Fact]
         public void Given_Luck_when_quiz_should_say_old_saga()

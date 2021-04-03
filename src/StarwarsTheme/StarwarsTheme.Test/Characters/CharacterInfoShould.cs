@@ -12,6 +12,6 @@ namespace StarwarsTheme.Test.Characters
         [InlineData("Luck", null)]
         public void Throw_incomplete_when_info_missing(string name, string eyeColor) =>
             Assert.Throws<IncompleteCharacterInformationException>(() =>
-            CharacterInfo.Create(name, eyeColor));
+            new CharacterInfo(name, eyeColor));
     }
 }

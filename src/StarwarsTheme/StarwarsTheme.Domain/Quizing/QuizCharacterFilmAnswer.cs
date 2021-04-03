@@ -1,4 +1,4 @@
-﻿using StarwarsTheme.Domain.Filrms;
+﻿using StarwarsTheme.Domain.Films;
 
 namespace StarwarsTheme.Domain.Quizing
 {

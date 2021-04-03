@@ -12,6 +12,7 @@ using StarwarsTheme.Infrastructure.Characters;
 using StarwarsTheme.Infrastructure.Films;
 using StarwarsTheme.Infrastructure.Mapping.Profiles;
 using StarwarsTheme.PriorToReadyTasks;
+using System.Reflection;
 
 namespace StarwarsTheme
 {
@@ -36,13 +37,15 @@ namespace StarwarsTheme
             services.Configure<StarwarsGatewaySettings>(Configuration.GetSection(nameof(StarwarsGatewaySettings)));
             services.AddFeatureManagement();
             services.AddPriorToReadyTasks();
-             
+
             services
-                .AddSingleton<IFilmRepository,InMemoryFilmRepository>()
+                .AddSingleton<IFilmRepository, InMemoryFilmRepository>()
+                .AddTransient<IFilmService, FilmService>()
+                .AddTransient<IFilmMappingService, FilmMappingService>()
                 .AddTransient<ICharacterService, CharacterService>()
                 .AddTransient<ICharacterMappingService, CharacterMappingService>()
                 .AddSingleton<ICharacterRepository, InMemoryCharacterRepository>()
-                .AddAutoMapper(typeof(CharacterProfile))
+                .AddAutoMapper(Assembly.GetAssembly(typeof(CharacterProfile)))
                 .AddHttpClient<IStarwarsCharactersGateway, StarwarsCharactersGateway>();
         }
 

@@ -5,15 +5,16 @@ namespace StarwarsTheme.Domain.Characters
     public record CharacterInfo
     {
         public static CharacterInfo Empty = new CharacterInfo(string.Empty, string.Empty);
+
         public string Name { get; }
         public string EyeColor { get; }
-        private CharacterInfo(string name, string eyeColor) => (Name, EyeColor) = (name, eyeColor);
 
-        public static CharacterInfo Create(string name, string eyeColor)
+        public CharacterInfo(string name, string eyeColor) 
         {
             EnsureInfo(name, eyeColor);
-            return new CharacterInfo(name, eyeColor);
+            (Name, EyeColor) = (name, eyeColor);
         }
+
         public static bool TryCreate(string name, string eyeColor, out CharacterInfo characterInfo)
         {
             if(!IsValidInfo(name, eyeColor))

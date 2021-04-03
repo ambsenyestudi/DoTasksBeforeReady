@@ -18,13 +18,21 @@ namespace StarwarsTheme.Infrastructure.Characters
         }
         public List<CharacterDTO> ToCharacterDTO(CharacterCollection characterCollection)
         {
-            return characterCollection.AsEnumerable()
-                .Select(ch => mapper.Map<CharacterDTO>(ch))
-                .ToList();
+            var resultList = new List<CharacterDTO>();
+            var characterList = characterCollection.AsEnumerable().ToList();
+            for (int i = 0; i < characterList.Count; i++)
+            {
+                var character = characterList[i];
+                var characterDTO = mapper.Map<CharacterDTO>(character.Info);
+                characterDTO.Id = mapper.Map<string>(character.Id);
+                resultList.Add(characterDTO);
+            }
+            return resultList;
         }
+            
         public CharacterCollection ToCharaterCollection(StarwarsCharacterResponse characterResponse)
         {
-            var charList = characterResponse.Results.Select(ch => new Character(new CharacterId(Guid.NewGuid()), CharacterInfo.Create(ch.Name, ch.EyeColor)));
+            var charList = characterResponse.Results.Select(ch => new Character(new CharacterId(Guid.NewGuid()), new CharacterInfo(ch.Name, ch.EyeColor)));
             return new CharacterCollection(charList);
         }
     }

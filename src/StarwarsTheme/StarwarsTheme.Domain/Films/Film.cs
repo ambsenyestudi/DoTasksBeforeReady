@@ -1,4 +1,4 @@
-﻿namespace StarwarsTheme.Domain.Filrms
+﻿namespace StarwarsTheme.Domain.Films
 {
     public class Film
     {

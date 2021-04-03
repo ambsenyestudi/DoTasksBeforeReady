@@ -17,12 +17,8 @@ namespace StarwarsTheme.Application.Characters
         }
         public List<CharacterDTO> GetAll()
         {
-            var collection = repository.GetAll();
-            return collection.AsEnumerable().Select(ch=>new CharacterDTO 
-            { 
-                Name = ch.Info.Name,
-                EyeColor = ch.Info.EyeColor
-            }).ToList();
+            var characterCollection = repository.GetAll();
+            return mappingService.ToCharacterDTO(characterCollection);
         }
     }
 }

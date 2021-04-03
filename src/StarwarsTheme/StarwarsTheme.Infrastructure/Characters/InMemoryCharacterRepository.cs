@@ -26,7 +26,7 @@ namespace StarwarsTheme.Infrastructure.Characters
             this.gateway = gateway;
             this.mapper = mapper;
             var guid = Guid.NewGuid();
-            var list = new List<Character> { new Character(new CharacterId(guid), CharacterInfo.Create("Luck", "Blue")) };
+            var list = new List<Character> { new Character(new CharacterId(guid), new CharacterInfo("Luck", "Blue")) };
             inMemoryList = new CharacterCollection(list);
         }
 

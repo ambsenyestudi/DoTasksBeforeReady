@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using StarwarsTheme.Application.Films;
 using StarwarsTheme.Domain;
-using StarwarsTheme.Domain.Characters;
-using StarwarsTheme.Domain.Filrms;
+using StarwarsTheme.Domain.Films;
 using System;
 using System.Collections.Generic;
 using System.Linq;
