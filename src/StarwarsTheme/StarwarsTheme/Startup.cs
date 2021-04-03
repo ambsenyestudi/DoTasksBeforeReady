@@ -7,10 +7,12 @@ using Microsoft.FeatureManagement;
 using Microsoft.OpenApi.Models;
 using StarwarsTheme.Application.Characters;
 using StarwarsTheme.Application.Films;
+using StarwarsTheme.Application.Quizing;
 using StarwarsTheme.Infrastructure;
 using StarwarsTheme.Infrastructure.Characters;
 using StarwarsTheme.Infrastructure.Films;
 using StarwarsTheme.Infrastructure.Mapping.Profiles;
+using StarwarsTheme.Infrastructure.Quizing;
 using StarwarsTheme.PriorToReadyTasks;
 using System.Reflection;
 
@@ -39,6 +41,8 @@ namespace StarwarsTheme
             services.AddPriorToReadyTasks();
 
             services
+                .AddTransient<IQuizService, QuizService>()
+                .AddTransient<IQuizMappingService, QuizMappingService>()
                 .AddSingleton<IFilmRepository, InMemoryFilmRepository>()
                 .AddTransient<IFilmService, FilmService>()
                 .AddTransient<IFilmMappingService, FilmMappingService>()
