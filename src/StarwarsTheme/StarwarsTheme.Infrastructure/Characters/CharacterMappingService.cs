@@ -24,7 +24,7 @@ namespace StarwarsTheme.Infrastructure.Characters
         }
         public CharacterCollection ToCharaterCollection(StarwarsCharacterResponse characterResponse)
         {
-            var charList = characterResponse.Results.Select(ch => new Character(new CharacterId(Guid.NewGuid()), new CharacterInfo(ch.Name, ch.EyeColor)));
+            var charList = characterResponse.Results.Select(ch => new Character(new CharacterId(Guid.NewGuid()), CharacterInfo.Create(ch.Name, ch.EyeColor)));
             return new CharacterCollection(charList);
         }
     }

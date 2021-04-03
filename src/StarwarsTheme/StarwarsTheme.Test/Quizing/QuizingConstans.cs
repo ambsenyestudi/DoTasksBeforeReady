@@ -15,7 +15,7 @@ namespace StarwarsTheme.Test.Quizing
         public const int NEW_HOPE_EPISODE_ID = 4;
         public const string NEW_HOPE_TITLE = "A new hope";
         public const string NEW_HOPE_DIRECTOR = "George Lucas";
-        public static readonly DateTime NEW_HOPE_RELEASEDATE = FilmInfo.StringToReleaseDate("1977-05-25");
+        public static readonly ReleaseDate NEW_HOPE_RELEASEDATE = ReleaseDate.Parse("1977-05-25");
         public static readonly Film NEW_HOPE_FILM = new Film(
             new FilmId(NEW_HOPE_ID),
             new FilmInfo(NEW_HOPE_TITLE,
@@ -30,7 +30,7 @@ namespace StarwarsTheme.Test.Quizing
         public const string EMPIRE_STRIKES_BACK_TITLE = "The empire strikes back";
         public const int EMPIRE_STRIKES_BACK_EPISODE_ID = 5;
         public const string EMPIRE_STRIKES_BACK_DIRECTOR = "Irvin Kershner";
-        public static readonly DateTime EMPIRE_STRIKES_BACK_RELEASEDATE = FilmInfo.StringToReleaseDate("1980-05-17");
+        public static readonly ReleaseDate EMPIRE_STRIKES_BACK_RELEASEDATE = ReleaseDate.Parse("1980-05-17");
         public static readonly Film EMPIRE_STRIKES_BACK_FILM = new Film(
             new FilmId(EMPIRE_STRIKES_BACK_ID),
             new FilmInfo(EMPIRE_STRIKES_BACK_TITLE,
@@ -44,7 +44,7 @@ namespace StarwarsTheme.Test.Quizing
         public const string RETURN_OF_THE_JEDI_TITLE = "Empire strikes back";
         public const int RETURN_OF_THE_JEDI_EPISODE_ID = 6;
         public const string RETURN_OF_THE_JEDI_DIRECTOR = "Richard Marquand";
-        public static readonly DateTime RETURN_OF_THE_JEDI_RELEASEDATE = FilmInfo.StringToReleaseDate("1983-05-25");
+        public static readonly ReleaseDate RETURN_OF_THE_JEDI_RELEASEDATE = ReleaseDate.Parse("1983-05-25");
         public static readonly Film RETURN_OF_THE_JEDI_FILM = new Film(
             new FilmId(RETURN_OF_THE_JEDI_ID),
             new FilmInfo(RETURN_OF_THE_JEDI_TITLE,

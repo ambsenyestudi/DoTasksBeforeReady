@@ -23,7 +23,7 @@ namespace StarwarsTheme.Infrastructure.Films
             this.gateway = gateway;
             this.mapper = mapper;
             var guid = new Guid("7e613b56-aa04-4a95-841f-cce7c28cd9d4");
-            var list = new List<Film> { new Film(new FilmId(guid), new FilmInfo("The bew hope", "George Lucas", 3, DateTime.Now)) };
+            var list = new List<Film> { new Film(new FilmId(guid), new FilmInfo("A new hope", "George Lucas", 3, ReleaseDate.Parse("1977-05-25"))) };
             inMemoryList = new FilmCollection(list);
         }
 
