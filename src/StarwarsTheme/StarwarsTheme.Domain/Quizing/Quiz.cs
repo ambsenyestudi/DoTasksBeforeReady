@@ -1,5 +1,6 @@
 ﻿using StarwarsTheme.Domain.Characters;
 using StarwarsTheme.Domain.Films;
+using StarwarsTheme.Domain.Quizing.CharacterEyeColors;
 using StarwarsTheme.Domain.Quizing.FilmYears;
 using System;
 using System.Collections.Generic;
@@ -11,17 +12,14 @@ namespace StarwarsTheme.Domain.Quizing
     {
         public static FilmYearQuiz CreateFilmYearQuiz(QuizId id, Film film)
         {
+            EnsuerFilm(film);
             return new FilmYearQuiz(id, film);
         }
-        public static CharacterFilmQuiz CreateCharacterFilmQuiz(Character character, IEnumerable<Film> filmCollection, QuizId id)
+        public static CharacterEyeColorQuiz CreatecharacterEyeColorQuizDictionary(QuizId id, Character character)
         {
             EnsureCharacter(character);
-            EnsuerFilms(filmCollection);
-
-
-            return new CharacterFilmQuiz(character, filmCollection, id);
+            return new CharacterEyeColorQuiz(id, character);
         }
-
         private static void EnsureCharacter(Character character)
         {
             if(character == null || character.Info == null)
@@ -30,12 +28,14 @@ namespace StarwarsTheme.Domain.Quizing
             }
         }
 
-        private static void EnsuerFilms(IEnumerable<Film> films)
+        private static void EnsuerFilm(Film film)
         {
-            if (films == null || !films.Any())
+            if (film == null || film.Info == null)
             {
                 throw new ArgumentException();
             }
         }
+
+        
     }
 }

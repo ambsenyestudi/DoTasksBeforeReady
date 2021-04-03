@@ -1,8 +1,8 @@
 ﻿namespace StarwarsTheme.Application.DTO
 {
-    public class FilmYearQuestionDTO
+    public class EyeColorAnswerDTO
     {
         public string QuizId { get; set; }
-        public string Question { get; set; }
+        public string EyeColor { get; set; }
     }
 }

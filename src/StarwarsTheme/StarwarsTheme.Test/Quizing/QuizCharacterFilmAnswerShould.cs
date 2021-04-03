@@ -9,6 +9,7 @@ using static StarwarsTheme.Test.Quizing.QuizingConstans;
 
 namespace StarwarsTheme.Test.Quizing
 {
+    //Todo change to Character eye color quiz
     public class QuizCharacterFilmAnswerShould
     {
         //6db1aa54-cd21-4485-8e59-60a099f50a7b}
@@ -20,6 +21,7 @@ namespace StarwarsTheme.Test.Quizing
         {
             LUCK = new Character(LUCK_ID, new CharacterInfo("Luck Skywalker", "blue"));
         }
+        /*
         [Fact]
         public void Given_Luck_when_quiz_should_say_old_saga()
         {
@@ -46,7 +48,7 @@ namespace StarwarsTheme.Test.Quizing
             Assert.Throws<ArgumentException>(() => Quiz.CreateCharacterFilmQuiz(noNameCharacter, OLD_SAGA_FILM_LIST, LUCK_QUIZ_ID));
 
         }
-        
+        */
 
     }
 }

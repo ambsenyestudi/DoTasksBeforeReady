@@ -18,15 +18,15 @@ namespace StarwarsTheme.Application.Quizing
             this.mappingService = mappingService;
         }
 
-        public List<FilmYearQuestionDTO> GetFilmYearQuestions()
+        public List<QuizQuestionDTO> GetFilmYearQuestions()
         {
             var quizCollection = repository.GetAllYearFilms();
-            var quizList = quizCollection.AsEnumerable().ToList();
-            var resultList = new List<FilmYearQuestionDTO>();
+            var quizList = quizCollection.ToList();
+            var resultList = new List<QuizQuestionDTO>();
             for (int i = 0; i < quizList.Count; i++)
             {
                 var quiz = quizList[i];
-                resultList.Add(mappingService.ToQuestion(quiz));
+                resultList.Add(mappingService.ToFilmYearQuestion(quiz));
             }
             return resultList;
         }
@@ -39,7 +39,17 @@ namespace StarwarsTheme.Application.Quizing
             return filmYearQuiz.IsCorrectAnswer(answer);
         }
 
-
-
+        public IEnumerable<QuizQuestionDTO> GetCharacterEyeColorQuestions()
+        {
+            var quizCollection = repository.GetAllCharactersEyeColor();
+            var quizList = quizCollection.ToList();
+            var resultList = new List<QuizQuestionDTO>();
+            for (int i = 0; i < quizList.Count; i++)
+            {
+                var quiz = quizList[i];
+                resultList.Add(mappingService.ToCharacterEyeColorQuestion(quiz));
+            }
+            return resultList;
+        }
     }
 }

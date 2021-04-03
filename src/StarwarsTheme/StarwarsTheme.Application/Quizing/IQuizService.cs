@@ -5,7 +5,8 @@ namespace StarwarsTheme.Application.Quizing
 {
     public interface IQuizService
     {
-        List<FilmYearQuestionDTO> GetFilmYearQuestions();
+        List<QuizQuestionDTO> GetFilmYearQuestions();
         bool EvaluateFilmYearAnswer(FilmYearAnswerDTO answer);
+        IEnumerable<QuizQuestionDTO> GetCharacterEyeColorQuestions();
     }
 }

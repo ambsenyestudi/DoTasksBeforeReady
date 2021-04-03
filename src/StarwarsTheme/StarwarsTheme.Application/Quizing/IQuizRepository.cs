@@ -1,4 +1,5 @@
 ﻿using StarwarsTheme.Domain;
+using StarwarsTheme.Domain.Quizing.CharacterEyeColors;
 using StarwarsTheme.Domain.Quizing.FilmYears;
 using System.Collections.Generic;
 using System.Threading;
@@ -12,5 +13,6 @@ namespace StarwarsTheme.Application.Quizing
         Task UpdateRepositoryAsync(CancellationToken cancellationToken);
         IEnumerable<FilmYearQuiz> GetAllYearFilms();
         FilmYearQuiz GetFilmYearQuizBy(QuizId id);
+        IEnumerable<CharacterEyeColorQuiz> GetAllCharactersEyeColor();
     }
 }
