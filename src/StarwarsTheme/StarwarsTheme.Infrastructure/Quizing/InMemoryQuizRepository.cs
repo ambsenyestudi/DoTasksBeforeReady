@@ -56,18 +56,18 @@ namespace StarwarsTheme.Infrastructure.Quizing
 
         public FilmYearQuiz GetFilmYearQuizBy(QuizId id)
         {
-            if(filmYearQuizDictionary.ContainsKey(id))
+            if(!filmYearQuizDictionary.ContainsKey(id))
             {
-                throw new KeyNotFoundException(id.Value.ToString());
+                throw new QuizNotFoundException(id);
             }
             return filmYearQuizDictionary[id];
         }
 
         public CharacterEyeColorQuiz GetCharacterEyeColorQuizBy(QuizId id)
         {
-            if (characterEyeColorQuizDictionary.ContainsKey(id))
+            if (!characterEyeColorQuizDictionary.ContainsKey(id))
             {
-                throw new KeyNotFoundException(id.Value.ToString());
+                throw new QuizNotFoundException(id);
             }
             return characterEyeColorQuizDictionary[id];
         }

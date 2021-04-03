@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using StarwarsTheme.Application.Characters;
 using StarwarsTheme.Application.Films;
 using StarwarsTheme.Application.Quizing;
+using StarwarsTheme.Filters;
 using StarwarsTheme.Infrastructure;
 using StarwarsTheme.Infrastructure.Characters;
 using StarwarsTheme.Infrastructure.Films;
@@ -31,7 +32,9 @@ namespace StarwarsTheme
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(config=> {
+                config.Filters.Add(typeof(ExceptionFilter));
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StarwarsTheme", Version = "v1" });
