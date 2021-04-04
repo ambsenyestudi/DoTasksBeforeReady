@@ -19,7 +19,7 @@ namespace StarwarsTheme.Infrastructure.Characters
         public List<CharacterDTO> ToCharacterDTO(CharacterCollection characterCollection)
         {
             var resultList = new List<CharacterDTO>();
-            var characterList = characterCollection.AsEnumerable().ToList();
+            var characterList = characterCollection.ToList();
             for (int i = 0; i < characterList.Count; i++)
             {
                 var character = characterList[i];

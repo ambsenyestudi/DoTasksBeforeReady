@@ -1,20 +1,39 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StarwarsTheme.Domain.Characters
 {
-    public class CharacterCollection
+    public class CharacterCollection:IEnumerable<Character>
     {
-        private readonly Dictionary<string, Character> characterDictionary = new Dictionary<string, Character>();
-        public Character this[string id]
-        {
-            get => characterDictionary[id];
-        }
+        private Dictionary<string, Character> characterNameDictionary = new Dictionary<string, Character>();
+        private Dictionary<CharacterId, Character> characterIdDictionary = new Dictionary<CharacterId, Character>();
+        
         public CharacterCollection(IEnumerable<Character> characters)
         {
-            characterDictionary = characters.ToDictionary(k => k.Info.Name, v => v);
+            processCollection(characters);
         }
+        private void processCollection(IEnumerable<Character> characters)
+        {
+            var characterList = characters.ToList();
+            for (int i = 0; i < characterList.Count; i++)
+            {
+                var name = characterList[i].Info.Name;
+                var id = characterList[i].Id;
+
+                characterNameDictionary.Add(name, characterList[i]);
+                characterIdDictionary.Add(id, characterList[i]);
+            }
+        }
+        public Character GetBy(string name) => characterNameDictionary[name];
+        public Character GetBy(CharacterId id) => characterIdDictionary[id];
         public IEnumerable<Character> AsEnumerable() =>
-            characterDictionary.Values;
+            characterNameDictionary.Values;
+
+        public IEnumerator<Character> GetEnumerator() => characterNameDictionary.Values.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        public bool ContainsId(string id) => characterNameDictionary.ContainsKey(id);
     }
 }

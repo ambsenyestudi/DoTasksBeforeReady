@@ -1,20 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StarwarsTheme.Domain.Films
 {
-    public class FilmCollection
+    public class FilmCollection : IEnumerable<Film>
     {
-        private readonly Dictionary<int, Film> filmDictionary = new Dictionary<int, Film>();
-        public Film this[int id]
+        private readonly Dictionary<FilmId, Film> filmDictionary = new Dictionary<FilmId, Film>();
+        public Film this[FilmId id]
         {
             get => filmDictionary[id];
         }
         public FilmCollection(IEnumerable<Film> characters)
         {
-            filmDictionary = characters.ToDictionary(k => k.Info.EpisodeId, v => v);
+            filmDictionary = characters.ToDictionary(k => k.Id, v => v);
         }
-        public IEnumerable<Film> AsEnumerable() =>
-            filmDictionary.Values;
+
+        public IEnumerator<Film> GetEnumerator() => filmDictionary.Values.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() =>
+            GetEnumerator();
+    
     }
 }

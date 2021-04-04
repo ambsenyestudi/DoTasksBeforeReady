@@ -34,7 +34,7 @@ namespace StarwarsTheme.Infrastructure.Quizing
         private void Store(FilmCollection filmCollection)
         {
 
-            filmYearQuizDictionary = filmCollection.AsEnumerable()
+            filmYearQuizDictionary = filmCollection
                 .Select(fl => Quiz.CreateFilmYearQuiz(new QuizId(Guid.NewGuid()), fl))
                 .ToDictionary(k =>
                     k.Id,
@@ -43,7 +43,7 @@ namespace StarwarsTheme.Infrastructure.Quizing
         private void Store(CharacterCollection characerCollection)
         {
 
-            characterEyeColorQuizDictionary = characerCollection.AsEnumerable()
+            characterEyeColorQuizDictionary = characerCollection
                 .Select(ch => Quiz.CreatecharacterEyeColorQuizDictionary(new QuizId(Guid.NewGuid()), ch))
                 .ToDictionary(k =>
                     k.Id,
